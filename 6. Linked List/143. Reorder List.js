@@ -48,6 +48,7 @@ var reorderList = function(head) {
     let second = slow.next;
     let prev=null;
     slow.next = null;
+    // or let prev = (slow.next = null)
     while(second) {
         let temp = second.next;
         second.next = prev;

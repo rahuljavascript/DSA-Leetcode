@@ -27,8 +27,10 @@ var groupAnagrams = function(strs) {
         }
         obj[sortedS].push(s)
     }
-    return Object.values(obj)
+    return Object.values(obj) // This itself returns a array Object.values(obj)
 };
+// Time COmplexity: O(m × n log n)
+// Space Complexity: O(m × n)
 
 // *************************************************************************
 

@@ -86,3 +86,6 @@ var deserialize = function (data) {
  * Your functions will be called as such:
  * deserialize(serialize(root));
  */
+
+// Time Complexity: O(n) for both serialize and deserialize, where n is the number of nodes in the tree. Each node is visited once during serialization and deserialization.
+// Space Complexity: O(n) for both serialize and deserialize, as we store the serialized string and the recursive call stack can go up to the height of the tree in the worst case.

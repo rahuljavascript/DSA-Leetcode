@@ -43,7 +43,7 @@
  * @return {number}
  */
 var maxPathSum = function (root) {
-    let res = [root.val];
+    let res = root.val;
 
     function dfs(root) {
         if (!root) return 0;
@@ -55,7 +55,7 @@ var maxPathSum = function (root) {
         rightMax = Math.max(rightMax, 0);
 
         // compute Max Path with split (root.val + leftMax + RightMax)
-        res[0] = Math.max(res[0], root.val + leftMax + rightMax)
+        res = Math.max(res, root.val + leftMax + rightMax)
 
         // return Max Path without split
         return root.val + Math.max(leftMax, rightMax);
@@ -63,7 +63,7 @@ var maxPathSum = function (root) {
     }
 
     dfs(root);
-    return res[0];
+    return res;
 
 };
 

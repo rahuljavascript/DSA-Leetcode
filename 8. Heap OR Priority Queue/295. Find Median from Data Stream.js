@@ -42,3 +42,51 @@
 
 // If all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
 // If 99% of all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
+
+
+var MedianFinder = function () {
+    this.maxQ = new MaxPriorityQueue();
+    this.minQ = new MinPriorityQueue();
+};
+
+/** 
+ * @param {number} num
+ * @return {void}
+ */
+MedianFinder.prototype.addNum = function (num) {
+    if (this.maxQ.isEmpty() || this.maxQ.front() >= num) {
+        this.maxQ.enqueue(num);
+    }
+    else {
+        this.minQ.enqueue(num);
+    }
+
+    if (this.maxQ.size() - this.minQ.size() > 1) {
+        this.minQ.enqueue(this.maxQ.dequeue());
+    }
+    else if (this.maxQ.size() - this.minQ.size() <= -1) {
+        this.maxQ.enqueue(this.minQ.dequeue());
+    }
+};
+
+/**
+ * @return {number}
+ */
+MedianFinder.prototype.findMedian = function () {
+    if (this.minQ.size() === this.maxQ.size()) {
+        return ((this.minQ.front() + this.maxQ.front()) / 2);
+    }
+    else if (this.minQ.size() > this.maxQ.size()) {
+        return this.minQ.front();
+    }
+    else {
+        return this.maxQ.front();
+    }
+};
+
+/** 
+ * Your MedianFinder object will be instantiated and called as such:
+ * var obj = new MedianFinder()
+ * obj.addNum(num)
+ * var param_2 = obj.findMedian()
+ */

@@ -90,3 +90,6 @@ MedianFinder.prototype.findMedian = function () {
  * obj.addNum(num)
  * var param_2 = obj.findMedian()
  */
+
+// Time Complexity: O(log n) for addNum and O(1) for findMedian, where n is the number of elements in the data structure.
+// Space Complexity: O(n) for storing the elements in the two heaps.
